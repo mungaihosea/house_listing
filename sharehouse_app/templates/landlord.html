@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Share House</title>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{% static 'css/Landlord.css' %}" rel="stylesheet">
+	<link href="{% static 'css/Styling.css' %}" rel="stylesheet">
+	<link href="{% static 'css/property.css' %}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+	</script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-sm-2"><img class="logoImage" id="logoImage" src="{% static 'images/arrrrsuqtax.png' %}"></div>
+				<div class="col-sm-8">
+					<h1>Share House</h1>
+					<p>Share House is a great place to find a house mate to share your resnt and utilities. This is a great central location to find houses and apartments all around Australia.</p>
+				</div>
+				<div class="col-sm-2">
+					<button class="button button1" onclick="location.href='http://www.google.com'" type="button">Register Account</button> <button class="button button2">Log into Account</button><br>
+				</div>
+			</div>
+		</div>
+		<div class="navigationDIV">
+			<div class="topnav">
+				<a href="index.html">Home</a> <a href="properties.html">Properties</a> <a class="active" href="Landlord.html">Landlord</a> <a href="Searchresults.html">Search results</a> <input placeholder="Search.." type="text">
+			</div>
+		</div>
+		<div class="row">
+			
+			<div class="col-sm-7">
+				
+					<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+						<label class="labelPropertyLandlord" for="title">Title</label><br>
+						<input class="labelPropertyLandlordInput" id="title" name="title" placeholder="Example: 101 Newplace Street, Brisbane, QLD, 4000 - $125/week" required="" type="text"><br>
+						<label class="labelPropertyBody" for="bodyOfListing">Property details</label><br>
+						<textarea class="labelPropertyBodytext" id="bodyOfListing" name="detail" placeholder="Please add comments.." required=""></textarea><br>
+						<label class="labelPropertyLandlord" for="email">Email:</label><br>
+						<input id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required="" type="email"><br>
+						<label class="labelPropertyLandlord" for="datemin">Enter a date after 12/04/2021:</label><br>
+						<input id="datemin" min="2021-04-11" name="date" required="" type="date"><br>
+						<label class="labelPropertyLandlord" for="bondRequired">Bond</label><br>
+						<input class="labelPropertyLandlordInput" id="bondRequired" min="0" type="number" name="bond" placeholder="Example: $1900" required="" step="1"><br>
+						<br>
+						<label>Property image</label>
+						<input type="file" name="image">
+						<br><br>
+						
+						<input type="submit" value="Save">
+					</form>
+					<p></p>
+				
+			</div>
+			<div class="col-sm-4">
+				<h3>Google map</h3>
+				<form>
+					<label class="labelPropertyLandlord" for="googleLink">Title</label><br>
+					<input class="labelPropertyLandlordInput" id="googleLink" name="googleLink" placeholder="Map address from Google Maps" type="text"><br>
+					<p>example: <iframe allowfullscreen height="300" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2988.7583336717003!2d-72.82565938426069!3d41.487838697724186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7c94be376add5%3A0x14f79379046b1bea!2s101%20New%20Pl%20St%2C%20Wallingford%2C%20CT%2006492%2C%20USA!5e0!3m2!1sen!2sau!4v1617972231883!5m2!1sen!2sau" style="border:0;" width="250"></iframe></p>
+				</form>
+			</div>
+		</div><!-- Footer -->
+		<footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge Footer">
+			<br>
+			<a href="#"><i class="fa fa-facebook-official"></i></a> <a href="#"><i class="fa fa-pinterest-p"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-flickr"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a><br>
+			<a href="#"><i class="fa fa-copyright"></i></a> Copyright Benjamin Gale MIS202 - App, Web Design and Development<br>
+			<a href="mailto:bengale_83@hotmail,com"><i class="fa fa-envelope"></i> Email me for any questions</a><br>
+			<p></p>
+		</footer>
+	</div>
+</body>
+</html>

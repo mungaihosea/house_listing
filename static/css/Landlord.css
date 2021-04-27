@@ -1,0 +1,22 @@
+.button3
+{
+	padding-left:auto;
+	padding-right:auto;
+}
+.labelPropertyLandlordInput, .labelPropertyBodytext
+{
+	width:100% !important;
+}
+.formSpacing
+{
+	padding-left:2px;
+}
+.labelPropertyBodytext
+{
+	width:100% !important;
+	height:120px;
+}
+.labelPropertyLandlord, .labelPropertyBody
+{
+	padding-top:3px;
+}

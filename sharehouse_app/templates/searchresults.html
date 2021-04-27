@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Share House</title>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{% static 'css/search.css' %}" rel="stylesheet">
+	<link href="{% static 'css/Styling.css' %}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+	</script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-sm-2"><img class="logoImage" id="logoImage" src="{% static 'images/arrrrsuqtax.png' %}"></div>
+				<div class="col-sm-8">
+					<h1>Share House</h1>
+					<p>Share House is a great place to find a house mate to share your resnt and utilities. This is a great central location to find houses and apartments all around Australia.</p>
+				</div>
+				<div class="col-sm-2">
+					<button class="button button1" onclick="location.href='http://www.google.com'" type="button">Register Account</button> <button class="button button2">Log into Account</button><br>
+				</div>
+			</div>
+		</div>
+		<div class="navigationDIV">
+			<div class="topnav">
+				<a href="{% url 'index' %}">Home</a> <a href="{% url 'properties' %}">Properties</a> <a href="Landlord.html">Landlord</a> <a  class="active" href="{% url 'search' %}">Search results</a> <input placeholder="Search.." type="text">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-3">
+
+			{% for property in properties %}				
+				
+				<p><a href="{% url 'property' property.id %}"><i aria-hidden="true" class="fa fa-star"></i> Add to Favourites</a><br>
+				<img class="houseImageSearchSML" style="width: 240px;" src="{{property.image.url}}"></p>
+			{% endfor %}
+				
+			</div>
+			<div class="col-sm-6">
+				{% for property in properties %}
+				<p><br>
+				<b>{{property.title}} - {{property.bond}}</b><br>
+				{{property.detail}}</p>
+				<p><br>
+				{% endfor %}
+				<!-- <b>102 Otherplace Street, Brisbane, QLD, 4000 - $125/week</b><br>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec urna velit. Integer vulputate sapien tellus, a efficitur felis pulvinar feugiat. Mauris quam tellus, sodales nec erat sit amet, lacinia finibus nisi. Vestibulum aliquam placerat euismod. Donec non lacus ornare, interdum turpis cursus, sagittis massa. Ut libero justo, faucibus nec orci sed, ornare varius turpis. Quisque eu maximus leo. Nullam leo justo, gravida vel sapien non, dapibus interdum elit. Praesent gravida vel felis commodo consequat. Ut mollis commodo cursus. Duis at justo suscipit, lobortis lacus sollicitudin, consectetur mi. Etiam nec pulvinar tellus, id maximus massa. In at libero purus. Phasellus eu rutrum massa.</p>
+				<p><br>
+				<b>142 Thirdplace Street, Brisbane, QLD, 4000 - $125/week</b><br>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec urna velit. Integer vulputate sapien tellus, a efficitur felis pulvinar feugiat. Mauris quam tellus, sodales nec erat sit amet, lacinia finibus nisi. Vestibulum aliquam placerat euismod. Donec non lacus ornare, interdum turpis cursus, sagittis massa. Ut libero justo, faucibus nec orci sed, ornare varius turpis. Quisque eu maximus leo. Nullam leo justo, gravida vel sapien non, dapibus interdum elit. Praesent gravida vel felis commodo consequat. Ut mollis commodo cursus. Duis at justo suscipit, lobortis lacus sollicitudin, consectetur mi. Etiam nec pulvinar tellus, id maximus massa. In at libero purus. Phasellus eu rutrum massa.</p> -->
+			</div>
+			<div class="col-sm-3">
+				{% for property in properties %}
+				<br>
+				<iframe allowfullscreen height="175" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.035336907938!2d153.0236191656798!3d-27.46815922321519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915a049838d16f%3A0x22c61e8f6fdab9d2!2sMcDonald&#39;s%20Queen%20Street!5e0!3m2!1sen!2sau!4v1617980360380!5m2!1sen!2sau" style="border:0;" width="260"></iframe><br>
+				{% endfor %}
+				
+			</div>
+		</div><!-- Footer -->
+		<footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge Footer">
+			<br>
+			<a href="#"><i class="fa fa-facebook-official"></i></a> <a href="#"><i class="fa fa-pinterest-p"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-flickr"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a><br>
+			<a href="#"><i class="fa fa-copyright"></i></a> Copyright Benjamin Gale MIS202 - App, Web Design and Development<br>
+			<a href="mailto:bengale_83@hotmail,com"><i class="fa fa-envelope"></i> Email me for any questions</a><br>
+			<p></p>
+		</footer>
+	</div>
+</body>
+</html>

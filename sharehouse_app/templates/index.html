@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Share House - Home</title>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{% static 'css/Home.css' %}" rel="stylesheet">
+	<link href="{% static 'css/Styling.css' %}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+	</script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-sm-2"><img class="logoImage" id="logoImage" src="{% static 'images/arrrrsuqtax.png' %}"></div>
+				<div class="col-sm-8">
+					<h1>Share House</h1>
+					<p>Share House is a great place to find a house mate to share your resnt and utilities. This is a great central location to find houses and apartments all around Australia.</p>
+				</div>
+				<div class="col-sm-2">
+					<button class="button button1" onclick="location.href='http://www.google.com'" type="button">Register Account</button> <button class="button button2">Log into Account</button><br>
+				</div>
+			</div>
+		</div>
+		<div class="navigationDIV">
+			<div class="topnav">
+				<a class="active" href="index.html">Home</a> <a href="{% url 'properties' %}">Properties</a> <a href="{% url 'landlord' %}">Landlord</a> <a href="{% url 'search' %}">Search results</a> <input placeholder="Search.." type="text">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<h3>Favourites</h3><a href="properties.html">
+				<p><i aria-hidden="true" class="fa fa-star"></i> View my Favourites</p></a>
+			</div>
+			<div class="col-sm-6">
+				<h3>Search Form</h3>
+				<form>
+					<p><input placeholder="Search.." type="text"> <a href="#"><i class="fa fa-search"></i></a> <label for="cars">State</label> <select id="cars" name="cars">
+						<option value="QLD">
+							QLD
+						</option>
+						<option value="NSW">
+							NSW
+						</option>
+						<option value="VIC">
+							VIC
+						</option>
+						<option value="NT">
+							NT
+						</option>
+						<option value="TAS">
+							TAS
+						</option>
+						<option value="WA">
+							WA
+						</option>
+						<option value="SA">
+							SA
+						</option>
+					</select></p><br>
+					<p>Prices between<br>
+					<input id="fname" name="fname" type="text"> and <input id="lname" name="lname" type="text"><br></p><br>
+					<p>Share With<br>
+					<input id="male" name="gender" type="radio" value="male"> <label for="male">Male</label> <input id="female" name="gender" type="radio" value="female"> <label for="female">Female</label> <input id="other" name="gender" type="radio" value="other"> <label for="other">Other</label><br></p><br>
+					<p>Pets allowed<br>
+					<input id="petsYes" name="pets" type="radio" value="yes"> <label for="yes">Yes</label> <input id="petsNo" name="pets" type="radio" value="no"> <label for="no">No</label></p><br>
+					<a href="{% url 'search' %}" class="btn btn-primary">search</a>
+					<!-- <input onclick="location.href='searchresults.html'" type="button" value="Search"><br> -->
+					<br>
+				</form>
+			</div>
+			<div class="col-sm-3">
+				<h3>Last viewed</h3>
+				<p class="housePreview"><img class="houseImage" src="{% static 'images/house1/House1.jpg' %}"><br>
+				101 Newplace street, Brisbane, QLD, 4000</p>
+				<p class="housePreview"><img class="houseImage" src="{% static 'images/house1/House2.jpg' %}"><br>
+				101 Newplace street, Brisbane, QLD, 4000</p>
+				<!--<p class="housePreview">
+				<img class="houseImage" src="images/house1/House3.jpg"></br>101 Newplace street, Brisbane, QLD, 4000</p> -->
+			</div>
+		</div><!-- Footer -->
+		<footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge Footer">
+			<br>
+			<a href="#"><i class="fa fa-facebook-official"></i></a> <a href="#"><i class="fa fa-pinterest-p"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-flickr"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a><br>
+			<a href="#"><i class="fa fa-copyright"></i></a> Copyright Benjamin Gale MIS202 - App, Web Design and Development<br>
+			<a href="mailto:bengale_83@hotmail,com"><i class="fa fa-envelope"></i> Email me for any questions</a><br>
+			<p></p>
+		</footer>
+	</div>
+</body>
+</html>

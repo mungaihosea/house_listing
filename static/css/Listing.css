@@ -1,0 +1,30 @@
+.houseImageSML
+{
+	width:115px !important;
+	height:110px !important;
+}
+.houseLargeImage, img.housePreview
+{
+	width:352px !important;
+	height:202px !important;
+}
+.labelProperty
+{
+	width:70px;
+}
+
+textarea#enquire
+{
+	width:376px !important;
+	height:60px !important;
+	margin-left:-4px;
+}
+.container
+{
+	overflow:hidden !important;
+	padding-left:0px;
+}
+.carousel-indicators
+{
+	display:none;
+}

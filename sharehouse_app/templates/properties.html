@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Share House</title>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{static 'css/Property.css' %}" rel="stylesheet">
+	<link href="{static 'css/Styling.css' %}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+	</script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-sm-2"><img class="logoImage" id="logoImage" src="images/arrrrsuqtax.png"></div>
+				<div class="col-sm-8">
+					<h1>Share House</h1>
+					<p>Share House is a great place to find a house mate to share your resnt and utilities. This is a great central location to find houses and apartments all around Australia.</p>
+				</div>
+				<div class="col-sm-2">
+					<button class="button button1" onclick="location.href='http://www.google.com'" type="button">Register Account</button> <button class="button button2">Log into Account</button><br>
+				</div>
+			</div>
+		</div>
+		<div class="navigationDIV">
+			<div class="topnav">
+				<a class="active" href="index.html">Home</a> <a href="properties.html">Properties</a> <a href="Landlord.html">Landlord</a> <a href="Searchresults.html">Search results</a> <input placeholder="Search.." type="text">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<h3>Property photos</h3>
+				<div class="container">
+					<div class="carousel carousel-fade" data-ride="carousel" id="myCarousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li class="active" data-slide-to="0" data-target="#myCarousel"></li>
+							<li data-slide-to="1" data-target="#myCarousel"></li>
+							<li data-slide-to="2" data-target="#myCarousel"></li>
+						</ol><!-- Wrapper for slides -->
+						<div class="carousel-inner">
+							<div class="item active"><img alt="House1" class="houseLargeImage" src="{% static 'images/house1/House1.jpg' %}"></div>
+							<div class="item"><img alt="House2" class="houseLargeImage" src="{% static 'images/house1/House2.jpg' %}"></div>
+							<div class="item"><img alt="House3" class="houseLargeImage" src="{% static 'images/house1/House3.jpg' %}"></div>
+						</div>
+					</div>
+				</div>
+				<p class="housePreview"></p>
+				<p class="houseImageArray"><img class="houseImageSML" src="{% static 'images/house1/House1.jpg' %}"> <img class="houseImageSML" src="{% static 'images/house1/House2.jpg' %}"> <img class="houseImageSML" src="{% static 'images/house1/House3.jpg' %}"><br></p>
+				<p class="houseImageArray"><img class="houseImageSML" src="{% static 'images/house1/House3.jpg' %}"> <img class="houseImageSML" src="{% static 'images/house1/House2.jpg' %}"> <img class="houseImageSML" src="{% static 'images/house1/House1.jpg' %}"><br></p>
+			</div>
+			<div class="col-sm-5">
+				<h2>101 Newplace Street, Brisbane, QLD, 4000 - $125/week</h2><a href="properties.html">
+				<p><i aria-hidden="true" class="fa fa-star"></i> Mark as Favourites</p></a>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquam vestibulum metus et ultrices. Vestibulum nec bibendum dui, nec placerat dui. Maecenas vestibulum convallis porta. Proin ac risus scelerisque, egestas sapien ac, mollis mi. Aliquam congue magna eu lorem tempor pulvinar. Donec sagittis dolor nec est dictum dapibus. Curabitur malesuada congue ex, in sollicitudin neque tempor id. Maecenas metus ipsum, iaculis non lacinia et, pretium in urna. Mauris et convallis orci. Sed nec rutrum sapien. Phasellus a justo consectetur, faucibus risus at, efficitur ex. Duis tempor, massa eget semper maximus, metus elit vestibulum ipsum, id posuere elit purus non justo. In sagittis id orci nec scelerisque. Donec gravida aliquam orci, in convallis ex ornare vitae.</p>
+				<h4>Date Available: 30th March</h4>
+				<form>
+					<form action="action_page.php">
+						<label class="labelProperty" for="subject">Subject</label> <input id="subject" name="subjectField" placeholder="Subject...." type="text"><br>
+						<label class="labelProperty" for="email">Email</label> <input id="email" name="emailField" placeholder="Email Address" type="text"><br>
+						<label class="labelProperty" for="enquire">Comments</label> 
+						<textarea id="enquire" name="enquire" placeholder="Please add comments.."></textarea><br>
+						<input type="submit" value="Submit"><input onclick="location.href='mailto:bengale_83@hotmail.com?subject=Enquiry: 101 Newplace Street, Brisbane, QLD, 4000'" type="button" value="Email Landlord">
+					</form>
+					<p></p>
+				</form>
+			</div>
+			<div class="col-sm-3">
+				<h3>Google map</h3><iframe allowfullscreen height="300" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2988.7583336717003!2d-72.82565938426069!3d41.487838697724186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7c94be376add5%3A0x14f79379046b1bea!2s101%20New%20Pl%20St%2C%20Wallingford%2C%20CT%2006492%2C%20USA!5e0!3m2!1sen!2sau!4v1617972231883!5m2!1sen!2sau" style="border:0;" width="250"></iframe>
+			</div>
+		</div><!-- Footer -->
+		<footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge Footer">
+			<br>
+			<a href="#"><i class="fa fa-facebook-official"></i></a> <a href="#"><i class="fa fa-pinterest-p"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-flickr"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a><br>
+			<a href="#"><i class="fa fa-copyright"></i></a> Copyright Benjamin Gale MIS202 - App, Web Design and Development<br>
+			<a href="mailto:bengale_83@hotmail,com"><i class="fa fa-envelope"></i> Email me for any questions</a><br>
+			<p></p>
+		</footer>
+	</div>
+</body>
+</html>

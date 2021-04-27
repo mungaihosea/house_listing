@@ -1,0 +1,17 @@
+
+
+/** House Previews **/
+.housePreview
+{
+	/**border:#ccc 1px solid;**/
+	padding-left:3px;
+	padding-bottom:3px;
+}
+
+.houseImage
+{
+	max-height:222.530px !important;
+	max-width:255px !important;
+	overflow:hidden !important;
+
+}

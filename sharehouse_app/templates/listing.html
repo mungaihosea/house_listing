@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Share House</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/Property.css' %}" >
+  <link rel="stylesheet" href="{% static 'css/Styling.css' %}" >
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+	<body>
+
+	<div class="container">
+	  <div class="jumbotron">
+		  <div class="row">
+		<div class="col-sm-2">
+				<img class="logoImage" id="logoImage" src="{% static 'images/arrrrsuqtax.png' %}">
+		</div> 
+	 <div class="col-sm-8">
+			<h1>Share House</h1>
+			<p>Share House is a great place to find a house mate to share your resnt and utilities. This is a great central location to find houses and apartments all around Australia.</p> 
+		</div>
+		<div class="col-sm-2">
+			<button class="button button1" onclick="location.href='http://www.google.com'"type="button">Register Account</button>
+			<button class="button button2">Log into Account</button>
+			</br>
+		</div> 
+	  </div>
+	  </div>
+	<div class="navigationDIV">
+		<div class="topnav">
+			<a href="index.html">Home</a>
+			<a href="properties.html">Properties</a>
+			<a href="Landlord.html">Landlord</a>
+			<a href="Searchresults.html">Search results</a>
+		  <input type="text" placeholder="Search..">
+		</div>
+	</div>	
+		 
+	 <div class="row">
+		<div class="col-sm-4">
+		<h3>Property photos</h3>  
+
+		<img style="width: 300px;" src="{{ property.image.url }}"></img>
+		</div>
+		<div class="col-sm-5">
+		  <h2>{{property.title}} - ${{property.bond}}</h2>
+		  <a href="properties.html"><p><i class="fa fa-star" aria-hidden="true"></i> Mark as Favourites</p></a>
+		  <p>
+		  {{property.detail}}
+
+	<h4>Date Available: {{property.date}}</h4>
+
+	<form>
+	  <form action="action_page.php">
+
+		<label class="labelProperty" for="subject">Subject </label><input type="text" id="subject" name="subjectField" placeholder="Subject...."> </br>
+		<label class="labelProperty" for="email">Email </label><input type="text" id="email" name="emailField" placeholder="Email Address"></br>
+
+		<label class="labelProperty" for="enquire">Comments</label>
+		<textarea id="enquire" name="enquire" placeholder="Please add comments.."></textarea>
+		</br>
+		<input type="submit" value="Submit">
+
+	</form>
+		</p>
+		</div>
+		<div class="col-sm-3">
+		  <h3>Google map</h3>        
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2988.7583336717003!2d-72.82565938426069!3d41.487838697724186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7c94be376add5%3A0x14f79379046b1bea!2s101%20New%20Pl%20St%2C%20Wallingford%2C%20CT%2006492%2C%20USA!5e0!3m2!1sen!2sau!4v1617972231883!5m2!1sen!2sau" width="250" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		</div>
+	  </div>
+	  <!-- Footer -->
+	<footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge Footer"></br>
+	  <a href="#"><i class="fa fa-facebook-official"></i></a>
+	  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+	  <a href="#"><i class="fa fa-twitter"></i></a>
+	  <a href="#"><i class="fa fa-flickr"></i></a>
+	  <a href="#"><i class="fa fa-linkedin"></i></a></br><a href="#"><i class="fa fa-copyright"> </i></a> Copyright Benjamin Gale MIS202 - App, Web Design and Development
+	</br><a href="mailto:bengale_83@hotmail,com"><i class="fa fa-envelope"> </i> Email me for any questions</a>
+	</br>
+	  </p>
+	</footer>
+	</div>
+
+	</body>
+</html>
