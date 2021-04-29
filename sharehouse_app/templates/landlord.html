@@ -31,17 +31,20 @@
 			
 			<div class="col-sm-7">
 					<div class="alert alert-primary">
-						You can use this page to add a new property
+						This section displays all your properties, You can use this page to add, edit or remove properties that you own.<br>
+						<button class="btn btn-primary">Add property</button>
 					</div>
+					
 					<p>My properties</p>
 					<ul class="list-group">
+						{% for property in properties %}
 						<li class="list-group-item">
-							property one 
+							{{property.title}} 
 							<a style="float: right;" class="btn btn-danger  btn-sm" style="margin:2px">Remove property</a>
 							<span style="float: right;color: white;"> --</span>
 							<a style="float: right;" class="btn btn-primary  btn-sm" style="margin:2px">Edit</a>
 						</li>
-						
+						{% endfor %}
 					</ul>
 					<!-- <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 						<label class="labelPropertyLandlord" for="title">Title</label><br>

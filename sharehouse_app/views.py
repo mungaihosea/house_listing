@@ -26,22 +26,8 @@ def search(request):
     return render(request, 'searchresults.html', context)
 
 def landlord(request):
-    if request.method == "POST":
-
-        property = Property()
-        property.name = request.POST.get('name')
-        property.title = request.POST.get('title')
-        property.detail = request.POST.get('detail')
-        property.email = request.POST.get('email')
-        property.bond = request.POST.get('bond')
-        property.date = request.POST.get('date')
-        if request.FILES:
-            print(request.FILES)
-            property.image = request.FILES.get('image')
-
-        property.save()
-
-    return render(request, 'landlord.html', {})
+    queryset = Property.objects.filter(user = request.user) #get all properties
+    return render(request, 'landlord.html', {"properties":queryset})
 
 
 def sign_up(request):
@@ -58,10 +44,11 @@ def sign_up(request):
 def login(request):
     error = None
     if request.method == "POST":
+        print(request.POST)
         try:
             user = User.objects.get(username = request.POST.get('username'))
             if user.check_password(request.POST.get("password")):
-                login_user(user)
+                login_user(request, user)
                 return redirect("index")
         except Exception as e:
             error = "Invalid login credentials"
@@ -72,3 +59,41 @@ def login(request):
 def logout(request):
     logout_user(request)
     return redirect('login')
+
+def edit_property(request, id):
+    if request.method == "POST":
+        try:
+            property = Property.objects.get(id = id)
+            property.name = request.POST.get('name')
+            property.title = request.POST.get('title')
+            property.detail = request.POST.get('detail')
+            property.email = request.POST.get('email')
+            property.bond = request.POST.get('bond')
+            property.date = request.POST.get('date')
+            if request.FILES:
+                print(request.FILES)
+                property.image = request.FILES.get('image')
+
+            property.save()
+        except:
+            pass
+    return render(request, 'edit_property.html', {})
+
+def add_property(request):
+    if request.method == "POST":
+        property = Property()
+        property.name = request.POST.get('name')
+        property.title = request.POST.get('title')
+        property.detail = request.POST.get('detail')
+        property.email = request.POST.get('email')
+        property.bond = request.POST.get('bond')
+        property.date = request.POST.get('date')
+        if request.FILES:
+            print(request.FILES)
+            property.image = request.FILES.get('image')
+
+        property.save()
+    return redirect('landlord')
+
+def remove_property(request):
+    return redirect('landlord')
