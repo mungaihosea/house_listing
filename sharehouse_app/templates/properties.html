@@ -6,8 +6,8 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1" name="viewport">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-	<link href="{static 'css/Property.css' %}" rel="stylesheet">
-	<link href="{static 'css/Styling.css' %}" rel="stylesheet">
+	<link href="{% static 'css/search.css' %}" rel="stylesheet">
+	<link href="{% static 'css/Styling.css' %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	</script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="jumbotron">
 			<div class="row">
-				<div class="col-sm-2"><img class="logoImage" id="logoImage" src="images/arrrrsuqtax.png"></div>
+				<div class="col-sm-2"><img class="logoImage" id="logoImage" src="{% static 'images/arrrrsuqtax.png' %}"></div>
 				<div class="col-sm-8">
 					<h1>Share House</h1>
 					<p>Share House is a great place to find a house mate to share your resnt and utilities. This is a great central location to find houses and apartments all around Australia.</p>
@@ -30,49 +30,43 @@
 		</div>
 		<div class="navigationDIV">
 			<div class="topnav">
-				<a class="active" href="index.html">Home</a> <a href="properties.html">Properties</a> <a href="Landlord.html">Landlord</a> <a href="Searchresults.html">Search results</a> <input placeholder="Search.." type="text">
+				<a href="{% url 'index' %}">Home</a>
+				<a class="active" href="{% url 'properties' %}">Properties</a>
+				<a href="{% url 'landlord' %}">Landlord</a>
+				<a href="{% url 'search' %}">Search results</a>
+			  <input type="text" placeholder="Search..">
 			</div>
-		</div>
+		</div>	
+		
 		<div class="row">
-			<div class="col-sm-4">
-				<h3>Property photos</h3>
-				<div class="container">
-					<div class="carousel carousel-fade" data-ride="carousel" id="myCarousel">
-						<!-- Indicators -->
-						<ol class="carousel-indicators">
-							<li class="active" data-slide-to="0" data-target="#myCarousel"></li>
-							<li data-slide-to="1" data-target="#myCarousel"></li>
-							<li data-slide-to="2" data-target="#myCarousel"></li>
-						</ol><!-- Wrapper for slides -->
-						<div class="carousel-inner">
-							<div class="item active"><img alt="House1" class="houseLargeImage" src="{% static 'images/house1/House1.jpg' %}"></div>
-							<div class="item"><img alt="House2" class="houseLargeImage" src="{% static 'images/house1/House2.jpg' %}"></div>
-							<div class="item"><img alt="House3" class="houseLargeImage" src="{% static 'images/house1/House3.jpg' %}"></div>
-						</div>
-					</div>
-				</div>
-				<p class="housePreview"></p>
-				<p class="houseImageArray"><img class="houseImageSML" src="{% static 'images/house1/House1.jpg' %}"> <img class="houseImageSML" src="{% static 'images/house1/House2.jpg' %}"> <img class="houseImageSML" src="{% static 'images/house1/House3.jpg' %}"><br></p>
-				<p class="houseImageArray"><img class="houseImageSML" src="{% static 'images/house1/House3.jpg' %}"> <img class="houseImageSML" src="{% static 'images/house1/House2.jpg' %}"> <img class="houseImageSML" src="{% static 'images/house1/House1.jpg' %}"><br></p>
+			<div class="col-sm-3">
+
+			{% for property in properties %}				
+				
+				<p><a href="{% url 'property' property.id %}"><i aria-hidden="true" class="fa fa-star"></i> Add to Favourites</a><br>
+				<img class="houseImageSearchSML" style="width: 240px;" src="{{property.image.url}}"></p>
+			{% endfor %}
+				
 			</div>
-			<div class="col-sm-5">
-				<h2>101 Newplace Street, Brisbane, QLD, 4000 - $125/week</h2><a href="properties.html">
-				<p><i aria-hidden="true" class="fa fa-star"></i> Mark as Favourites</p></a>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquam vestibulum metus et ultrices. Vestibulum nec bibendum dui, nec placerat dui. Maecenas vestibulum convallis porta. Proin ac risus scelerisque, egestas sapien ac, mollis mi. Aliquam congue magna eu lorem tempor pulvinar. Donec sagittis dolor nec est dictum dapibus. Curabitur malesuada congue ex, in sollicitudin neque tempor id. Maecenas metus ipsum, iaculis non lacinia et, pretium in urna. Mauris et convallis orci. Sed nec rutrum sapien. Phasellus a justo consectetur, faucibus risus at, efficitur ex. Duis tempor, massa eget semper maximus, metus elit vestibulum ipsum, id posuere elit purus non justo. In sagittis id orci nec scelerisque. Donec gravida aliquam orci, in convallis ex ornare vitae.</p>
-				<h4>Date Available: 30th March</h4>
-				<form>
-					<form action="action_page.php">
-						<label class="labelProperty" for="subject">Subject</label> <input id="subject" name="subjectField" placeholder="Subject...." type="text"><br>
-						<label class="labelProperty" for="email">Email</label> <input id="email" name="emailField" placeholder="Email Address" type="text"><br>
-						<label class="labelProperty" for="enquire">Comments</label> 
-						<textarea id="enquire" name="enquire" placeholder="Please add comments.."></textarea><br>
-						<input type="submit" value="Submit"><input onclick="location.href='mailto:bengale_83@hotmail.com?subject=Enquiry: 101 Newplace Street, Brisbane, QLD, 4000'" type="button" value="Email Landlord">
-					</form>
-					<p></p>
-				</form>
+			<div class="col-sm-6">
+				{% for property in properties %}
+				<p><br>
+				<b>{{property.title}} - {{property.bond}}</b><br>
+				{{property.detail}}</p>
+				<p><br>
+				{% endfor %}
+				<!-- <b>102 Otherplace Street, Brisbane, QLD, 4000 - $125/week</b><br>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec urna velit. Integer vulputate sapien tellus, a efficitur felis pulvinar feugiat. Mauris quam tellus, sodales nec erat sit amet, lacinia finibus nisi. Vestibulum aliquam placerat euismod. Donec non lacus ornare, interdum turpis cursus, sagittis massa. Ut libero justo, faucibus nec orci sed, ornare varius turpis. Quisque eu maximus leo. Nullam leo justo, gravida vel sapien non, dapibus interdum elit. Praesent gravida vel felis commodo consequat. Ut mollis commodo cursus. Duis at justo suscipit, lobortis lacus sollicitudin, consectetur mi. Etiam nec pulvinar tellus, id maximus massa. In at libero purus. Phasellus eu rutrum massa.</p>
+				<p><br>
+				<b>142 Thirdplace Street, Brisbane, QLD, 4000 - $125/week</b><br>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec urna velit. Integer vulputate sapien tellus, a efficitur felis pulvinar feugiat. Mauris quam tellus, sodales nec erat sit amet, lacinia finibus nisi. Vestibulum aliquam placerat euismod. Donec non lacus ornare, interdum turpis cursus, sagittis massa. Ut libero justo, faucibus nec orci sed, ornare varius turpis. Quisque eu maximus leo. Nullam leo justo, gravida vel sapien non, dapibus interdum elit. Praesent gravida vel felis commodo consequat. Ut mollis commodo cursus. Duis at justo suscipit, lobortis lacus sollicitudin, consectetur mi. Etiam nec pulvinar tellus, id maximus massa. In at libero purus. Phasellus eu rutrum massa.</p> -->
 			</div>
 			<div class="col-sm-3">
-				<h3>Google map</h3><iframe allowfullscreen height="300" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2988.7583336717003!2d-72.82565938426069!3d41.487838697724186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7c94be376add5%3A0x14f79379046b1bea!2s101%20New%20Pl%20St%2C%20Wallingford%2C%20CT%2006492%2C%20USA!5e0!3m2!1sen!2sau!4v1617972231883!5m2!1sen!2sau" style="border:0;" width="250"></iframe>
+				{% for property in properties %}
+				<br>
+				<iframe allowfullscreen height="175" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.035336907938!2d153.0236191656798!3d-27.46815922321519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915a049838d16f%3A0x22c61e8f6fdab9d2!2sMcDonald&#39;s%20Queen%20Street!5e0!3m2!1sen!2sau!4v1617980360380!5m2!1sen!2sau" style="border:0;" width="260"></iframe><br>
+				{% endfor %}
+				
 			</div>
 		</div><!-- Footer -->
 		<footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge Footer">

@@ -33,10 +33,10 @@
 	  </div>
 	<div class="navigationDIV">
 		<div class="topnav">
-			<a href="index.html">Home</a>
-			<a href="properties.html">Properties</a>
-			<a href="Landlord.html">Landlord</a>
-			<a href="Searchresults.html">Search results</a>
+			<a href="{% url 'index' %}">Home</a>
+			<a href="{% url 'properties' %}">Properties</a>
+			<a href="{% url 'landlord' %}">Landlord</a>
+			<a href="{% url 'search' %}">Search results</a>
 		  <input type="text" placeholder="Search..">
 		</div>
 	</div>	

@@ -10,7 +10,7 @@ def properties(request):
     context = {
         "properties": queryset,
     }
-    return render(request, 'searchresults.html', context)
+    return render(request, 'properties.html', context)
 
 def property_detail(request, id):
     property = get_object_or_404(Property, id = id)

@@ -30,9 +30,13 @@
 		</div>
 		<div class="navigationDIV">
 			<div class="topnav">
-				<a class="active" href="index.html">Home</a> <a href="{% url 'properties' %}">Properties</a> <a href="{% url 'landlord' %}">Landlord</a> <a href="{% url 'search' %}">Search results</a> <input placeholder="Search.." type="text">
+				<a class="active" href="{% url 'index' %}">Home</a>
+				<a href="{% url 'properties' %}">Properties</a>
+				<a href="{% url 'landlord' %}">Landlord</a>
+				<a href="{% url 'search' %}">Search results</a>
+			  <input type="text" placeholder="Search..">
 			</div>
-		</div>
+		</div>	
 		<div class="row">
 			<div class="col-sm-3">
 				<h3>Favourites</h3><a href="properties.html">
