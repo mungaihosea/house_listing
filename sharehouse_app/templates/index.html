@@ -33,7 +33,7 @@
 			</div>
 			<div class="col-sm-6">
 				<h3>Search for Properties</h3>
-				<form method="POST">{% csrf_token %}
+				<form action="{% url 'search' %}" method="POST">{% csrf_token %}
 					<p>
 						<i class="fa fa-search"></i><label for="cars" style="margin-left: 4px"> Keyword</label><br>
 						<input name="keyword" placeholder="Search.." type="text">

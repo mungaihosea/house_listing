@@ -3,6 +3,7 @@ from .models import Property
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login as login_user, logout as logout_user
+from django.db.models import Q
 
 def index(request):
     return render(request, 'index.html', {})
@@ -19,7 +20,19 @@ def property_detail(request, id):
     return render(request, 'listing.html', {"property":property})
 
 def search(request):
-    queryset = Property.objects.all()
+    if request.method == "POST":
+        print(request.POST)
+        keyword = request.POST.get('keyword')
+        upper_price = request.POST.get('upper_price', None)
+        lower_price = request.POST.get('lower_price', None)
+        
+        try:
+            queryset = Property.objects.filter(Q(title__icontains = keyword) | Q(detail__icontains = keyword) | Q(bond__gt = int(lower_price)) |Q(bond__lt = int(upper_price)))
+        except:
+            queryset = Property.objects.filter(Q(title__icontains = keyword) | Q(detail__icontains = keyword))
+
+    else:
+        queryset = Property.objects.all()
     context = {
         "properties": queryset,
     }
