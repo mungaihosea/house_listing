@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Property
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import login as login_user, logout as logout_user
 
 def index(request):
     return render(request, 'index.html', {})
@@ -40,4 +42,33 @@ def landlord(request):
         property.save()
 
     return render(request, 'landlord.html', {})
-    
+
+
+def sign_up(request):
+    if request.method == "POST":
+        user = User()
+        user.username = request.POST.get('username', None)
+        user.email = request.POST.get('email', None)
+        user.set_password(request.POST.get('password'))
+        user.save()
+        login_user(request, user)
+        return redirect('index')
+    return render(request, 'sign_up.html', {})
+
+def login(request):
+    error = None
+    if request.method == "POST":
+        try:
+            user = User.objects.get(username = request.POST.get('username'))
+            if user.check_password(request.POST.get("password")):
+                login_user(user)
+                return redirect("index")
+        except Exception as e:
+            error = "Invalid login credentials"
+            print(e)
+        
+    return render(request, 'login.html', {"error":error})
+
+def logout(request):
+    logout_user(request)
+    return redirect('login')

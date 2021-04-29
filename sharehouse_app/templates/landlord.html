@@ -17,18 +17,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="jumbotron">
-			<div class="row">
-				<div class="col-sm-2"><img class="logoImage" id="logoImage" src="{% static 'images/arrrrsuqtax.png' %}"></div>
-				<div class="col-sm-8">
-					<h1>Share House</h1>
-					<p>Share House is a great place to find a house mate to share your resnt and utilities. This is a great central location to find houses and apartments all around Australia.</p>
-				</div>
-				<div class="col-sm-2">
-					<button class="button button1" onclick="location.href='http://www.google.com'" type="button">Register Account</button> <button class="button button2">Log into Account</button><br>
-				</div>
-			</div>
-		</div>
+		{% include 'header.html' %}
 		<div class="navigationDIV">
 			<div class="topnav">
 				<a href="{% url 'index' %}">Home</a>
@@ -41,8 +30,20 @@
 		<div class="row">
 			
 			<div class="col-sm-7">
-				
-					<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+					<div class="alert alert-primary">
+						You can use this page to add a new property
+					</div>
+					<p>My properties</p>
+					<ul class="list-group">
+						<li class="list-group-item">
+							property one 
+							<a style="float: right;" class="btn btn-danger  btn-sm" style="margin:2px">Remove property</a>
+							<span style="float: right;color: white;"> --</span>
+							<a style="float: right;" class="btn btn-primary  btn-sm" style="margin:2px">Edit</a>
+						</li>
+						
+					</ul>
+					<!-- <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 						<label class="labelPropertyLandlord" for="title">Title</label><br>
 						<input class="labelPropertyLandlordInput" id="title" name="title" placeholder="Example: 101 Newplace Street, Brisbane, QLD, 4000 - $125/week" required="" type="text"><br>
 						<label class="labelPropertyBody" for="bodyOfListing">Property details</label><br>
@@ -59,7 +60,7 @@
 						<br><br>
 						
 						<input type="submit" value="Save">
-					</form>
+					</form> -->
 					<p></p>
 				
 			</div>
