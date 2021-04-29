@@ -32,7 +32,7 @@
 			<div class="col-sm-7">
 					<div class="alert alert-primary">
 						This section displays all your properties, You can use this page to add, edit or remove properties that you own.<br>
-						<button class="btn btn-primary">Add property</button>
+						<a href="{% url 'create_property' %}" class="btn btn-primary">Add property</a>
 					</div>
 					
 					<p>My properties</p>
@@ -40,9 +40,9 @@
 						{% for property in properties %}
 						<li class="list-group-item">
 							{{property.title}} 
-							<a style="float: right;" class="btn btn-danger  btn-sm" style="margin:2px">Remove property</a>
+							<a href="{% url 'remove_property' property.id %}" style="float: right;" class="btn btn-danger  btn-sm" style="margin:2px">Remove property</a>
 							<span style="float: right;color: white;"> --</span>
-							<a style="float: right;" class="btn btn-primary  btn-sm" style="margin:2px">Edit</a>
+							<a href="{% url 'edit_property' property.id %}" style="float: right;" class="btn btn-primary  btn-sm" style="margin:2px">Edit</a>
 						</li>
 						{% endfor %}
 					</ul>

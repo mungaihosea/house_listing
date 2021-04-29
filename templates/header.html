@@ -9,7 +9,6 @@
         {% if request.user.is_authenticated %}
         <div class="col-sm-2">
             <a href="{% url 'logout' %}" class="button button1" type="button">Logout</a>
-            <button class="button button2">view my property</button><br>
         </div>
         {% else %} 
         <div class="col-sm-2">

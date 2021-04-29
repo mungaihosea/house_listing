@@ -32,39 +32,19 @@
 				<p><i aria-hidden="true" class="fa fa-star"></i> View my Favourites</p></a>
 			</div>
 			<div class="col-sm-6">
-				<h3>Search Form</h3>
-				<form>
-					<p><input placeholder="Search.." type="text"> <a href="#"><i class="fa fa-search"></i></a> <label for="cars">State</label> <select id="cars" name="cars">
-						<option value="QLD">
-							QLD
-						</option>
-						<option value="NSW">
-							NSW
-						</option>
-						<option value="VIC">
-							VIC
-						</option>
-						<option value="NT">
-							NT
-						</option>
-						<option value="TAS">
-							TAS
-						</option>
-						<option value="WA">
-							WA
-						</option>
-						<option value="SA">
-							SA
-						</option>
-					</select></p><br>
+				<h3>Search for Properties</h3>
+				<form method="POST">{% csrf_token %}
+					<p>
+						<i class="fa fa-search"></i><label for="cars" style="margin-left: 4px"> Keyword</label><br>
+						<input name="keyword" placeholder="Search.." type="text">
+					</p>
+					<br>
 					<p>Prices between<br>
-					<input id="fname" name="fname" type="text"> and <input id="lname" name="lname" type="text"><br></p><br>
-					<p>Share With<br>
-					<input id="male" name="gender" type="radio" value="male"> <label for="male">Male</label> <input id="female" name="gender" type="radio" value="female"> <label for="female">Female</label> <input id="other" name="gender" type="radio" value="other"> <label for="other">Other</label><br></p><br>
-					<p>Pets allowed<br>
-					<input id="petsYes" name="pets" type="radio" value="yes"> <label for="yes">Yes</label> <input id="petsNo" name="pets" type="radio" value="no"> <label for="no">No</label></p><br>
-					<a href="{% url 'search' %}" class="btn btn-primary">search</a>
-					<!-- <input onclick="location.href='searchresults.html'" type="button" value="Search"><br> -->
+					<input id="fname" name="lower_price" type="text">
+						and
+					<input id="lname" name="upper_price" type="text"><br></p><br>
+					<button type="submit" class="btn btn-primary">search</button>
+					<!-- <a href="{% url 'search' %}" class="btn btn-primary">search</a> -->
 					<br>
 				</form>
 			</div>

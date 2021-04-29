@@ -7,7 +7,7 @@ class Property(models.Model):
     detail = models.TextField()
     bond = models.IntegerField()
     email = models.EmailField()
-    date = models.CharField(max_length = 30)
+    date = models.DateField(max_length = 30, auto_now_add =True,  null = True)
     image = models.ImageField(null = True)
 
     def __str__(self):

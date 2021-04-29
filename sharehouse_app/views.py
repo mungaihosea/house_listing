@@ -61,39 +61,41 @@ def logout(request):
     return redirect('login')
 
 def edit_property(request, id):
+    p = get_object_or_404(Property, id = id)
     if request.method == "POST":
         try:
             property = Property.objects.get(id = id)
-            property.name = request.POST.get('name')
             property.title = request.POST.get('title')
             property.detail = request.POST.get('detail')
             property.email = request.POST.get('email')
             property.bond = request.POST.get('bond')
-            property.date = request.POST.get('date')
             if request.FILES:
                 print(request.FILES)
                 property.image = request.FILES.get('image')
 
             property.save()
-        except:
-            pass
-    return render(request, 'edit_property.html', {})
+            return redirect('landlord')
+        except Exception as e:
+            print(e)
+    return render(request, 'edit_property.html', {'property':p})
 
 def add_property(request):
     if request.method == "POST":
         property = Property()
-        property.name = request.POST.get('name')
+        property.user = request.user
         property.title = request.POST.get('title')
         property.detail = request.POST.get('detail')
         property.email = request.POST.get('email')
         property.bond = request.POST.get('bond')
-        property.date = request.POST.get('date')
         if request.FILES:
             print(request.FILES)
             property.image = request.FILES.get('image')
-
         property.save()
-    return redirect('landlord')
 
-def remove_property(request):
+        return redirect('landlord')
+    return render(request, 'create_property.html', {})
+
+def remove_property(request, id):
+    p = get_object_or_404(Property, id = id)
+    p.delete()
     return redirect('landlord')
